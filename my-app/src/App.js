@@ -1,13 +1,10 @@
 import './App.scss';
 import logo from './images/LogoX.png';
-import React from 'react'; // Ensure React is capitalized.
+import React from 'react';
 
 function ChatBox(){
     return (
         <div className="chat-box">
-            <div className="chat-box-header">
-                <div className="chat-box-header-text">Chat</div>
-            </div>
             <div className="chat-box-body">
                 <div className="chat-box-message">
                     <div className="chat-box-message-text">Hello</div>
@@ -17,7 +14,7 @@ function ChatBox(){
                 </div>
             </div>
             <div className="chat-box-footer">
-                <input className="chat-box-input" type="text" placeholder="Type a message..." />
+                <input className="chat-box-input" type="text" placeholder="Message x10e"/>
                 <button className="chat-box-send">Send</button>
             </div>
         </div>

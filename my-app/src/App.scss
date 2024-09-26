@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: auto;
-  background: linear-gradient(315deg, rgb(2, 2, 2) 3%, rgb(64, 61, 64) 38%, rgb(37, 64, 85) 68%, rgb(0, 0, 0) 98%);
+  background: linear-gradient(315deg, rgb(2, 2, 2) 3%, rgb(255, 255, 255) 38%, rgb(18, 75, 162) 68%, rgb(18, 75, 162) 98%);
   animation: gradient 15s ease infinite;
   background-size: 400% 400%;
   background-attachment: fixed;
@@ -74,15 +74,76 @@ body {
   margin-left: 20px;
 }
 
-.chat-box{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 600px;
-    height: 400px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px 0 0 0;
-    overflow: hidden;
-    z-index: 1000;
+.chat-box {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* Responsive width */
+  max-width: 1000px; /* Limits the width on larger screens */
+  height: 20%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  z-index: 1000;
+  margin-right: 6000px;
 
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .chat-box {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-box {
+    height: 250px; /* Further adjust height for very small screens */
+  }
+}
+
+
+.chat-box-body {
+  background-color: #7b8dbb;
+}
+
+.chat-box-header {
+  background-color: #124ba2;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-box-input {
+  background-color: #d2cbcb;
+  color: black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px 15px 15px 15px ;
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 3px solid #ccc;
+}
+
+.chat-box-input:focus {
+  outline: none !important;
+  border-color: #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.chat-box-send {
+    background-color: #124ba2;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+  position: absolute;
+  margin-top: -38px;
+  margin-left: 850px;
 }
