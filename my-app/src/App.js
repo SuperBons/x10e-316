@@ -1,25 +1,40 @@
 import './App.scss';
 import logo from './images/LogoX.png';
 import React from 'react';
+import { useState } from 'react';
 
-function ChatBox(){
+function Message(str){
+    const [msg, setMsg] = useState([]);
+    return (
+        <>
+            <div className="chat-box-message">
+                <div className="chat-box-message-text">{str}</div>
+            </div>
+        </>
+    );
+}
+
+function ChatBox() {
     return (
         <div className="chat-box">
             <div className="chat-box-body">
-                <div className="chat-box-message">
-                    <div className="chat-box-message-text">Hello</div>
-                </div>
-                <div className="chat-box-message">
-                    <div className="chat-box-message-text">Hi</div>
-                </div>
+                {msg}
             </div>
             <div className="chat-box-footer">
                 <input className="chat-box-input" type="text" placeholder="Message x10e"/>
-                <button className="chat-box-send">Send</button>
+                <button className="chat-box-send" onKeyUp={OnClick}>Send</button>
             </div>
         </div>
     );
 }
+
+function OnClick() {
+    let a = msg;
+    a.push(document.getElementsByClassName("chat-box-input")[0].innerText);
+    setMsg(a);
+    console.log("ASD");
+}
+
 
 function App() {
     return (
