@@ -17,18 +17,20 @@ class PromptGenerator:
 
     def generate_prompt(self,promptType = None):
         template =  """
-        {chatHistory}
-        You are a friendly doctor talking to a patient. Given the following patient details:
+        
+        You are a medical chatbot talking to a patient. Use patients health summary and lab abnormalities to answer patients questions
+        . Given the following patient details:
         
         {patientHealthSummary}
 
         and the given lab abnormalities
 
         {abnormalities}
-
-        Keep your answers within 3-4 sentences. 
-
-        {userInput}
+        
+        {chatHistory}
+        "Hello Doctor" {userInput}
+        
+        Keep your answers within 3-4 sentences. Adress all patient questions. 
         
         """
         

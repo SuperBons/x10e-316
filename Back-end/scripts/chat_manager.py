@@ -23,13 +23,14 @@ class ChatManager(LLMManager):
         return chain
     
     def runChat(self):
-        userInput = ""  
+        
+        userInput = input("\n\n\n ______________________________________________________ \n\n")
         
         chain = self.__createChain__()
         
         while(userInput != "Exit"):
             
-            print(chain.predict(userInput = userInput))
+            print(chain.invoke(userInput = userInput))
             userInput = input("\n\n\n ______________________________________________________ \n\n")
 
 
