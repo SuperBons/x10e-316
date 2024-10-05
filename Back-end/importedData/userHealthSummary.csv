@@ -1,0 +1,2 @@
+PatientID,Name,Age,Gender,DateOfVisit,PreExistingConditions,PreviousVisits,CurrentMedications,DietType,PhysicalActivityLevel,SmokingStatus,AlcoholConsumption,BloodPressure,Weight,Height,BMI
+P001,John Doe,52,Male,2024-10-01,"Diabetes, Hypertension, High Cholesterol",8,"Metformin, Insulin, Lisinopril, Atorvastatin","Moderate, Low Carbohydrate",Moderate,Non-Smoker,Occasionally,150/95 mmHg,92 kg,175 cm,30.0
