@@ -7,31 +7,28 @@ class ChatManager(LLMManager):
 
     def __init__(self,queryRange,queryResolution):
         LLMManager.__init__(self,queryRange,queryResolution)   
-        self.memory = ConversationBufferMemory(memory_key="chatHistory")          
+
     
-    def __createChain__(self):
-        prompt = self.promptGenerator.generate_prompt()
-        memory = self.memory
-        llm = self.model
+    def __createChain__(self, template = None, question = None, answer = None):
+        self.promptGenerator.generate_template(question = question, answer = answer)        
+        return self.promptGenerator.update_chat_history(question = question, answer = answer)
 
-        chain = LLMChain(
-            llm = llm,
-            memory = memory,
-            prompt = prompt,
-        )
-
-        return chain
+    
+        
     
     def runChat(self):
         
-        userInput = input("\n\n\n ______________________________________________________ \n\n")
         
-        chain = self.__createChain__()
+        userInput = None
         
-        while(userInput != "Exit"):
+        while(userInput != "Exit" or userInput == None):
             
-            print(chain.invoke(userInput = userInput))
             userInput = input("\n\n\n ______________________________________________________ \n\n")
+            prompt = self.__createChain__(question = userInput)
+            answer = self.model.invoke(prompt)         
+            print(answer.content)
+            prompt =  self.__createChain__(question = userInput,answer = answer.content)
+            
 
 
 
