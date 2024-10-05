@@ -18,7 +18,6 @@ class PromptGenerator:
     
     def generate_template(self):
 
-    
         template = ChatPromptTemplate([
             ("system", """You are a medical chatbot talking to a patient. Use the patient's health summary,lab abnormalities, and chat history 
                 to answer their questions. Keep your responses within 3-4 sentences and address all patient questions."""),

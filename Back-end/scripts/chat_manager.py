@@ -8,6 +8,7 @@ class ChatManager(LLMManager):
     def __init__(self,queryRange,queryResolution):
         LLMManager.__init__(self,queryRange,queryResolution)   
 
+
     
     def __createChain__(self, template = None, question = None, answer = None):
         pass
