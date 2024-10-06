@@ -9,7 +9,7 @@ class CreateHealthSummary():
         #Include logic for accessing database and health records
         #Store data as a csv file
 
-        self.dataPath = '../importedData/userHealthSummary.csv'
+        self.dataPath = '../importedData/userHealth_summary_arthritis_undiag.csv'
         json_file_path = '../importedData/healthSummary.json'  # Replace with your output file path
         
         try:
@@ -23,9 +23,11 @@ class CreateHealthSummary():
         except FileNotFoundError as e:
             raise FileNotFoundError("Conversion failed!") from e    
                   
+    
     def get_health_summary(self): 
         summaryPath = self.summaryPath
         return json.loads(Path(summaryPath).read_text())
+    
     
     def get_health_summary_as_string(self): 
         # Load the CSV file

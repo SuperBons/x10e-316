@@ -13,9 +13,7 @@ class ChatManager(LLMManager):
     def __createChain__(self, template = None, question = None, answer = None):
         pass
 
-    
-        
-    
+
     def runChat(self):
         
      
@@ -31,9 +29,6 @@ class ChatManager(LLMManager):
             print(answer.content)
             userInput = input("\n\n\n ______________________________________________________ \n\n")
             prompt = self.promptGenerator.update_chat_history(question = userInput, answer = answer.content)
-
-            
-
 
 
 newChat = ChatManager(20,20)

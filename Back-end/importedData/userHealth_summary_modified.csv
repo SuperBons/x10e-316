@@ -1,0 +1,2 @@
+PatientID,Name,Age,Gender,DateOfVisit,PreExistingConditions,PreviousVisits,CurrentMedications,DietType,PhysicalActivityLevel,SmokingStatus,AlcoholConsumption,BloodPressure,Weight,Height,BMI
+P001,Jane Doe,30,Female,2024-10-01,None,8,None,Balanced,Active,Non-Smoker,Rarely,120/80 mmHg,65 kg,165 cm,23.9

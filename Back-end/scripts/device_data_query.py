@@ -8,7 +8,7 @@ class DeviceDataQuery():
     def __init__(self,dataRange,dataQuery):
         #Include logic for accessing database and health records
         #Store data as a csv file
-        self.dataPath = '../importedData/dataQuery.csv'
+        self.dataPath = '../importedData/dataQuery_arthritis.csv'
     
     def get_Abnormalities(self):
         dataPath = self.dataPath
@@ -20,16 +20,23 @@ class DeviceDataQuery():
             # Iterate over rows in both files simultaneously
             for row1 in reader1:
                 
+                recorded_value = float(row1[1])
+                lower_limit = float(row1[2])
+                upper_limit = float(row1[3])
+                critical_low_limit = float(row1[4]) 
+                critical_high_limit = float(row1[5])               
+
                 #Determine if value is above or below healthy normal range
                 
-                if row1[1] > row1[3]:
-                    if row1[1] >= row1[5]: healthyBounds = "is critically high at" 
-                    else: healthyBounds = "is high at"
+                if recorded_value > upper_limit:
+                    if recorded_value >= critical_high_limit: healthyBounds = " is critically high at " 
+                    else: healthyBounds = " is high at "
 
                     anamolies.append((row1[0],healthyBounds,row1[-1]))
-                elif row1[1] < row1[2]:
-                    if row1[1] <= row1[4]: healthyBounds = "is critically low at" 
-                    else: healthyBounds = "is low at"
+                
+                elif recorded_value <lower_limit:
+                    if recorded_value <= critical_low_limit: healthyBounds = " is critically low at " 
+                    else: healthyBounds = " is low at "
                     
                     anamolies.append((row1[0],healthyBounds,row1[-1]))
 
@@ -44,19 +51,27 @@ class DeviceDataQuery():
             next(reader1)
             # Iterate over rows in both files simultaneously
             for row1 in reader1:
-                
+                recorded_value = float(row1[1])
+                lower_limit = float(row1[2])
+                upper_limit = float(row1[3])
+                critical_low_limit = float(row1[4]) 
+                critical_high_limit = float(row1[5])               
+
                 #Determine if value is above or below healthy normal range
                 
-                if row1[1] > row1[3]:
-                    if row1[1] >= row1[5]: healthyBounds = " is critically high at " 
+                if recorded_value > upper_limit:
+                    if recorded_value >= critical_high_limit: healthyBounds = " is critically high at " 
                     else: healthyBounds = " is high at "
 
                     anamolies += str(row1[0]) + healthyBounds + str(row1[-1])
-                elif row1[1] < row1[2]:
-                    if row1[1] <= row1[4]: healthyBounds = " is critically low at " 
+                
+                elif recorded_value <lower_limit:
+                    if recorded_value <= critical_low_limit: healthyBounds = " is critically low at " 
                     else: healthyBounds = " is low at "
                     
                     anamolies += str(row1[0]) + healthyBounds + str(row1[-1])
+        
+        if(anamolies == ""): anamolies = "None Recorded"
 
         return anamolies
     

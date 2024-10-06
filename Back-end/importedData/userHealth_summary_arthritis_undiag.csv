@@ -1,0 +1,2 @@
+PatientID,Name,Age,Gender,DateOfVisit,PreExistingConditions,PreviousVisits,CurrentMedications,DietType,PhysicalActivityLevel,SmokingStatus,AlcoholConsumption,BloodPressure,Weight,Height,BMI
+P002,Jane Doe,45,Female,2024-10-05,None,5,"Ibuprofen",Balanced,Moderate,Non-Smoker,Rarely,130/85 mmHg,70 kg,165 cm,25.7

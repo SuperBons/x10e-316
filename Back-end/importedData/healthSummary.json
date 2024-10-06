@@ -1,20 +1,20 @@
 [
     {
-        "PatientID": "P001",
-        "Name": "John Doe",
-        "Age": 52,
-        "Gender": "Male",
-        "DateOfVisit": "2024-10-01",
-        "PreExistingConditions": "Diabetes, Hypertension, High Cholesterol",
-        "PreviousVisits": 8,
-        "CurrentMedications": "Metformin, Insulin, Lisinopril, Atorvastatin",
-        "DietType": "Moderate, Low Carbohydrate",
+        "PatientID": "P002",
+        "Name": "Jane Doe",
+        "Age": 45,
+        "Gender": "Female",
+        "DateOfVisit": "2024-10-05",
+        "PreExistingConditions": NaN,
+        "PreviousVisits": 5,
+        "CurrentMedications": "Ibuprofen",
+        "DietType": "Balanced",
         "PhysicalActivityLevel": "Moderate",
         "SmokingStatus": "Non-Smoker",
-        "AlcoholConsumption": "Occasionally",
-        "BloodPressure": "150/95 mmHg",
-        "Weight": "92 kg",
-        "Height": "175 cm",
-        "BMI": 30.0
+        "AlcoholConsumption": "Rarely",
+        "BloodPressure": "130/85 mmHg",
+        "Weight": "70 kg",
+        "Height": "165 cm",
+        "BMI": 25.7
     }
 ]
