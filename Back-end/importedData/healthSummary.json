@@ -1,0 +1,20 @@
+[
+    {
+        "PatientID": "P002",
+        "Name": "Jane Doe",
+        "Age": 45,
+        "Gender": "Female",
+        "DateOfVisit": "2024-10-05",
+        "PreExistingConditions": NaN,
+        "PreviousVisits": 5,
+        "CurrentMedications": "Ibuprofen",
+        "DietType": "Balanced",
+        "PhysicalActivityLevel": "Moderate",
+        "SmokingStatus": "Non-Smoker",
+        "AlcoholConsumption": "Rarely",
+        "BloodPressure": "130/85 mmHg",
+        "Weight": "70 kg",
+        "Height": "165 cm",
+        "BMI": 25.7
+    }
+]
