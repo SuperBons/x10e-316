@@ -14,11 +14,12 @@ function Message({ str, sender }) {
 function ChatBox() {
     const [msg, setMsg] = useState([]); // State for messages
     const [input, setInput] = useState(""); // State for input text
+    const [isThinking, setIsThinking] = useState(false); // State for bot thinking
     const chatBoxRef = useRef(null);
 
     // Function to handle sending a message
     const handleSend = () => {
-        if (input.trim() !== "") {
+        if (input.trim() !== "" && !isThinking) {
             const newMessage = {
                 text: input,
                 sender: 'user', // Mark this as user's message
@@ -27,6 +28,12 @@ function ChatBox() {
             // Add user message to the messages list
             setMsg([...msg, newMessage]);
 
+            // Clear the input after sending
+            setInput("");
+
+            // Set bot thinking state to true
+            setIsThinking(true);
+
             // Simulate a bot response
             setTimeout(() => {
                 const botResponse = {
@@ -34,10 +41,10 @@ function ChatBox() {
                     sender: 'bot',
                 };
                 setMsg((prevMessages) => [...prevMessages, botResponse]);
-            }, 1000);
 
-            // Clear the input after sending
-            setInput("");
+                // Set bot thinking state to false
+                setIsThinking(false);
+            }, 1000);
         }
     };
 
@@ -50,7 +57,7 @@ function ChatBox() {
 
     // Function to handle Enter key press
     const handleKeyPress = (e) => {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && !isThinking) {
             handleSend();
         }
     };
@@ -59,7 +66,7 @@ function ChatBox() {
         <React.Fragment>
             <div className="chat-box">
                 <div className="chat-box-header">
-                    <h4>Chat with GPT</h4>
+                    <h4>Chat with x10e</h4>
                 </div>
                 <div className="chat-box-body" ref={chatBoxRef}>
                     {msg.map((message, index) => (
@@ -74,8 +81,9 @@ function ChatBox() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)} // Update input state
                         onKeyPress={handleKeyPress} // Handle Enter key press
+                        disabled={isThinking} // Disable input when bot is thinking
                     />
-                    <button className="chat-box-send" onClick={handleSend}>
+                    <button className="chat-box-send" onClick={handleSend} disabled={isThinking}>
                         Send
                     </button>
                 </div>
