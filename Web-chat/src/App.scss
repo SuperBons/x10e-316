@@ -75,11 +75,11 @@ body {
 .chat-box {
   position: fixed; /* Fixed positioning to keep it in the same spot */
   bottom: 0;
-  left: 50%;
+  margin-left: 58%;
   transform: translateX(-50%);
   width: 95%; /* Increased width to take up most of the page */
   max-width: 1200px; /* Expanded max width for larger screens */
-  height: 70%; /* Increased height to take up more page space */
+  height: 95%; /* Increased height to take up more page space */
   background: rgb(255, 255, 255); /* Light background */
   border-radius: 20px 20px 0 0; /* Softer rounded corners */
   overflow: hidden; /* Removed scrollbar from the chat box container */
@@ -210,6 +210,8 @@ body {
   bottom: 15px; /* Align to the bottom of the chat box */
 }
 
+
+
 @media (max-width: 768px) {
   .chat-box-send {
     right: 10px; /* Adjust right position for smaller screens */
@@ -265,3 +267,30 @@ body {
   top: 0;
   border-radius: 10px;
 }
+
+
+.sign-out-button {
+  background-color: #7b8dbb;  /* A red color indicating an action like sign out */
+  color: #ffffff;             /* White text for contrast */
+  border: none;               /* Remove default border */
+  border-radius: 5px;         /* Slight rounding for a modern look */
+  padding: 10px 20px;         /* Spacing for comfortable click area */
+  font-size: 16px;            /* Easy-to-read text size */
+  cursor: pointer;            /* Changes cursor to a pointer to indicate clickability */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Smooth transitions */
+}
+
+.sign-out-button:hover {
+  background-color: #7b8dbb;  /* Darken the red slightly for hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Add shadow for depth on hover */
+}
+
+.sign-out-button:active {
+  background-color: #124ba2;  /* Further darken on active press for feedback */
+  transform: scale(0.98);      /* Slightly reduce size to simulate button press */
+}
+
+
+
+
+

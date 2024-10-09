@@ -1,6 +1,7 @@
 import './App.scss';
 import logo from './LogoX.png';
 import React, { useState, useEffect, useRef } from 'react';
+import SignIn from './SignIn';
 
 // Component for each message
 function Message({ str, sender }) {
@@ -11,7 +12,7 @@ function Message({ str, sender }) {
     );
 }
 
-function ChatBox() {
+function ChatBox({ onSignOut }) {
     const [msg, setMsg] = useState([]); // State for messages
     const [input, setInput] = useState(""); // State for input text
     const [isThinking, setIsThinking] = useState(false); // State for bot thinking
@@ -67,6 +68,9 @@ function ChatBox() {
             <div className="chat-box">
                 <div className="chat-box-header">
                     <h4>Chat with x10e</h4>
+                    <button className="sign-out-button" onClick={onSignOut}>
+                        Sign Out
+                    </button>
                 </div>
                 <div className="chat-box-body" ref={chatBoxRef}>
                     {msg.map((message, index) => (
@@ -93,6 +97,16 @@ function ChatBox() {
 }
 
 function App() {
+    const [isSignedIn, setIsSignedIn] = useState(false);
+
+    const handleSignIn = () => {
+        setIsSignedIn(true);
+    };
+
+    const handleSignOut = () => {
+        setIsSignedIn(false);
+    };
+
     return (
         <React.Fragment>
             <div className="wave-container">
@@ -101,7 +115,7 @@ function App() {
                 <div className="wave"></div>
                 <img className="logo" src={logo} alt="Logo" />
             </div>
-            <ChatBox />
+            {isSignedIn ? <ChatBox onSignOut={handleSignOut} /> : <SignIn onSignIn={handleSignIn} />}
         </React.Fragment>
     );
 }
