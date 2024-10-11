@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import './SignIn.scss';
 import logo from './LogoX.png';
-import ForgotPasswordModal from './ForgotPassword'; 
+import ForgotPasswordModal from './ForgotPassword';
+// Import Font Awesome for icons (optional)
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Eye and eye slash icons from react-icons
 
 function SignIn({ onSignIn, onSignUp }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showPassword, setShowPassword] = useState(false); // State for showing password
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,7 +20,6 @@ function SignIn({ onSignIn, onSignUp }) {
 
     const handleForgotPassword = (email) => {
         console.log('Email for password reset:', email);
-        // Add your logic to handle the password reset here (e.g., API call)
     };
 
     return (
@@ -38,14 +40,22 @@ function SignIn({ onSignIn, onSignUp }) {
                             placeholder="Username"
                             required
                         />
-                        <input
-                            type="password"
-                            className="sign-in-input"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Password"
-                            required
-                        />
+                        <div className="password-wrapper">
+                            <input
+                                type={showPassword ? "text" : "password"} // Toggle between 'text' and 'password'
+                                className="sign-in-input"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                required
+                            />
+                            <span
+                                className="password-toggle-icon"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Toggle icons */}
+                            </span>
+                        </div>
                         <div className="sign-in-form-group">
                             <input
                                 type="checkbox"

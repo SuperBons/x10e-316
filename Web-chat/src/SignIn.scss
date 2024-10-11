@@ -160,3 +160,20 @@ body {
     border-right-color: transparent;
   }
 }
+
+
+.password-wrapper {
+  position: relative;
+}
+
+
+.password-toggle-icon {
+  position: absolute;
+  top: 37%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 25px; // Adjust as per design
+  color: #888; // Icon color
+  margin-right: -5%;
+}
