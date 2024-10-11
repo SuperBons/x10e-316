@@ -2,7 +2,8 @@ body {
   overflow: hidden;
 }
 
-.sign-in-app {
+
+.backdrop {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +12,7 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  width: 50%; /* Adjust the width as needed */
+  width: 50%;
 }
 
 .sign-in-container {
@@ -67,6 +68,25 @@ body {
   color: #555;
 }
 
+
+.sign-up-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #124ba2;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2%;
+}
+
+.sign-up-button:hover {
+  background-color: #7b8dbb;
+}
+
+
 .sign-in-button {
   width: 100%;
   padding: 12px;
@@ -80,7 +100,7 @@ body {
 }
 
 .sign-in-button:hover {
-  background-color: #124ba2;
+  background-color: #3a66a4;
 }
 
 .sign-in-button:active {
@@ -91,4 +111,52 @@ body {
     font-size: 14px;
     color: #777;
     margin-left: 40%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+/* Global */
+html {
+  min-height: 100%;
+  overflow: hidden;
+}
+body {
+  height: calc(100vh - 8em);
+  padding: 4em;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Anonymous Pro', monospace;
+  background-color: rgb(25, 25, 25);
+}
+.line-1 {
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 10%;
+  transform: translate(-50%, -50%);
+  width: 24em;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 180%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Animation */
+.anim-typewriter {
+  animation: typewriter 4s steps(44) 1s 1 normal both, blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 24em;
+  }
+}
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
 }

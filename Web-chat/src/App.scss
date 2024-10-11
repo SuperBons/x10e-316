@@ -22,11 +22,18 @@ body {
 }
 
 .logo {
-  margin-top: -40px;
-  margin-left: 20px;
+  margin-left: -3%;
+  width: 150px;
+  height: 150px;
+  margin-top: -100px;
 }
 
-/* Wave Elements */
+@media (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+}
+
 .wave {
   position: fixed;
   bottom: 0;
@@ -38,7 +45,7 @@ body {
   transform: translate3d(0, 0, 0);
   animation: wave 10s -3s linear infinite;
   z-index: -2;
-  opacity: 0.8; /* Reduce opacity for a more subtle effect */
+  opacity: 0.8;
 }
 
 .wave:nth-of-type(2) {
@@ -71,42 +78,43 @@ body {
   }
 }
 
-/* Chat Box Styles */
 .chat-box {
-  position: fixed; /* Fixed positioning to keep it in the same spot */
+  position: fixed;
   bottom: 0;
-  margin-left: 58%;
+  left: 57%;
   transform: translateX(-50%);
-  width: 95%; /* Increased width to take up most of the page */
-  max-width: 1200px; /* Expanded max width for larger screens */
-  height: 95%; /* Increased height to take up more page space */
-  background: rgb(255, 255, 255); /* Light background */
-  border-radius: 20px 20px 0 0; /* Softer rounded corners */
-  overflow: hidden; /* Removed scrollbar from the chat box container */
+  width: 100%;
+  max-width: 1200px;
+  height: 95%;
+  background: rgb(255, 255, 255);
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
   z-index: 1000;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Added shadow to create separation */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Media query for smaller screens */
 @media (max-width: 768px) {
   .chat-box {
-    height: 60%; /* Adjust height for smaller screens */
+    width: 80%;
+    height: 80%;
+    margin-left: -60px;
   }
 }
 
 @media (max-width: 480px) {
   .chat-box {
-    height: 55%; /* Further adjust height for very small screens */
+    height: 50%;
   }
 }
 
 .chat-box-body {
   background-color: #f5f5f5;
   overflow-y: auto;
-  padding: 15px; /* Extra padding for better readability */
-  max-height: calc(100% - 200px); /* Allow more space for messages dynamically based on chat-box height */
+  padding: 15px;
+  flex: 1;
   scroll-behavior: smooth;
-  border-bottom: 2px solid rgb(255, 255, 255); /* Added bottom border to separate footer */
 }
 
 .chat-box-header {
@@ -127,8 +135,8 @@ body {
   word-wrap: break-word;
   line-height: 1.5;
   position: relative;
-  opacity: 0; /* Start hidden for animation */
-  animation: fadeInUp 0.8s ease-in-out forwards; /* Apply fade-in animation */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
 }
 
 .chat-box-message.user {
@@ -146,7 +154,6 @@ body {
   max-width: 40%;
 }
 
-/* Animation for bot messages */
 @keyframes fadeInUp {
   0% {
     transform: translateY(20px);
@@ -170,31 +177,22 @@ body {
   flex: 1;
   padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 30px; /* Softer rounded edges */
-  margin-left: 2%;
+  border-radius: 30px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
-  position: fixed; /* Fixed positioning */
-  bottom: 0; /* Align to the bottom */
-  left: 0; /* Align to the left */
-  width: 85%; /* Full width */
-  z-index: 1000; /* Ensure it stays on top */
-  margin-bottom: 1%;
-}
-
-@media (max-width: 768px) {
-  .chat-box-input {
-    width: 80%; /* Adjust width for smaller screens */
-  }
+  margin-right: 100px;
 }
 
 .chat-box-input:focus {
-  outline: none !important;
+  outline: none;
   border-color: #124ba2;
   box-shadow: 0 0 10px rgba(18, 75, 162, 0.5);
 }
 
-.chat-box-send {
+.chat-box-send,
+.modal-submit,
+.modal-close,
+.sign-out-button {
   padding: 15px 25px;
   border: none;
   outline: none;
@@ -205,32 +203,22 @@ body {
   border-radius: 10px;
   user-select: none;
   transition: background-color 0.3s ease;
-  position: absolute; /* Absolute positioning */
-  right: 15px; /* Align to the right side of the chat box */
-  bottom: 15px; /* Align to the bottom of the chat box */
+  position: relative;
 }
 
-
-
-@media (max-width: 768px) {
-  .chat-box-send {
-    right: 10px; /* Adjust right position for smaller screens */
-    bottom: 10px; /* Adjust bottom position for smaller screens */
-  }
+.chat-box-send:hover,
+.modal-submit:hover,
+.modal-close:hover,
+.sign-out-button:hover {
+  background-color: #0056b3;
 }
 
-.chat-box-send:hover {
-  background-color: #0056b3; /* Darker shade on hover for interaction feedback */
-}
-
-.chat-box-send:before {
+.chat-box-send:before,
+.modal-submit:before,
+.modal-close:before,
+.sign-out-button:before {
   content: "";
-  background: linear-gradient(
-                  45deg,
-                  #124ba2,
-                  #000000,
-                  #ffffff
-  );
+  background: linear-gradient(45deg, #124ba2, #000000, #ffffff);
   position: absolute;
   top: -2px;
   left: -2px;
@@ -256,7 +244,10 @@ body {
   }
 }
 
-.chat-box-send:after {
+.chat-box-send:after,
+.modal-submit:after,
+.modal-close:after,
+.sign-out-button:after {
   z-index: -1;
   content: "";
   position: absolute;
@@ -268,29 +259,94 @@ body {
   border-radius: 10px;
 }
 
-
-.sign-out-button {
-  background-color: #7b8dbb;  /* A red color indicating an action like sign out */
-  color: #ffffff;             /* White text for contrast */
-  border: none;               /* Remove default border */
-  border-radius: 5px;         /* Slight rounding for a modern look */
-  padding: 10px 20px;         /* Spacing for comfortable click area */
-  font-size: 16px;            /* Easy-to-read text size */
-  cursor: pointer;            /* Changes cursor to a pointer to indicate clickability */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Smooth transitions */
+.chat-box-send {
+  position: fixed;
+  right: 15px;
+  bottom: 12px;
 }
 
-.sign-out-button:hover {
-  background-color: #7b8dbb;  /* Darken the red slightly for hover effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Add shadow for depth on hover */
+@media (max-width: 768px) {
+  .chat-box-send {
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+.sign-out-button {
+  background-color: #7b8dbb;
 }
 
 .sign-out-button:active {
-  background-color: #124ba2;  /* Further darken on active press for feedback */
-  transform: scale(0.98);      /* Slightly reduce size to simulate button press */
+  background-color: #124ba2;
+  transform: scale(0.98);
+}
+
+.forgot-pass {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-submit {
+  background-color: #007bff;
+}
+
+.modal-close {
+  background-color: #ccc;
+  color: #ffffff;
 }
 
 
-
-
-
+.ForgotPassTxt {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%; /* Ensure the parent container has a defined height */
+}
