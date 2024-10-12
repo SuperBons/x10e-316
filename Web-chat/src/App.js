@@ -2,8 +2,8 @@ import './App.scss';
 import logo from './LogoX.png';
 import React, { useState } from 'react';
 import SignIn from './SignIn';
-import SignUp from './SignUp'; // Import the SignUp component
-import ChatBox from './ChatBox'; // Import ChatBox
+import SignUp from './SignUp';
+import ChatBox from './ChatBox';
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(false);

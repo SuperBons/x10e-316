@@ -5,7 +5,7 @@ import logo from './LogoX.png';
 function SignUp({ onSignIn, onBack }) {
     const [Fname, setFname] = useState('');
     const [Lname, setLname] = useState('');
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState(''); // Declared email instead of Pemail
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -17,7 +17,7 @@ function SignUp({ onSignIn, onBack }) {
         }
         console.log('FName:', Fname);
         console.log('LName:', Lname);
-        console.log('Username:', username);
+        console.log('email:', email);
         console.log('Password:', password);
         onSignIn();
     };
@@ -49,11 +49,11 @@ function SignUp({ onSignIn, onBack }) {
                             required
                         />
                         <input
-                            type="text"
+                            type="email" // Corrected input type for email
                             className="sign-in-input"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            placeholder="Username"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)} // Updated to set email
+                            placeholder="Email"
                             required
                         />
                         <input
