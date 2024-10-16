@@ -47,6 +47,6 @@ class PineconeManager():
         for i in range(0,len(embeddings)):
             self.db.upsert(vectors=zip(ids[i], embeddings[i], metadatas[i]))
 
-pineConeManager = PineconeManager()
-pineConeManager.connect_to_vector_db()
-pineConeManager.update_db()
+# pineConeManager = PineconeManager()
+# pineConeManager.connect_to_vector_db()
+# pineConeManager.update_db()

@@ -2,6 +2,7 @@ from langchain.prompts import ChatPromptTemplate,PromptTemplate,MessagesPlacehol
 from device_data_query import DeviceDataQuery
 from create_health_summary import CreateHealthSummary
 from langchain.schema import SystemMessage,HumanMessage,AIMessage
+from pinecone_manager import PineconeManager
 
 
 class PromptGenerator:
@@ -9,13 +10,15 @@ class PromptGenerator:
     deviceData: DeviceDataQuery #Object containg anamolies and user device data as two list[string] 
     healthSummary: CreateHealthSummary #Object creates JSON of user health records accesible as dict
 
-    def __init__(self,dataRange,dataResolution):
+    def __init__(self,deviceData : DeviceDataQuery ,healthSummary : CreateHealthSummary):
         
         #Load in user device data and health summary
         self.history = []
-        self.deviceData = DeviceDataQuery(dataRange, dataResolution) 
-        self.healthSummary = CreateHealthSummary()
+        self.deviceData = deviceData
+        self.healthSummary = healthSummary
 
+    def updateDeviceData(self, dataRange : int,dataResolution: int):
+        self.deviceData = DeviceDataQuery(dataRange,dataResolution) 
     
     def generate_template(self):
 

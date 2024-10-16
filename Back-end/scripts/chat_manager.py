@@ -1,22 +1,20 @@
 from llm_manager import LLMManager
 from langchain.memory import ConversationBufferMemory
+from prompt_generator import PromptGenerator
 
 from langchain.chains import LLMChain
 class ChatManager(LLMManager):
 
 
-    def __init__(self,queryRange,queryResolution):
-        LLMManager.__init__(self,queryRange,queryResolution)   
+    def __init__(self,promptGenerator : PromptGenerator):
+        super().__init__(promptGenerator)
 
-
-    
     def __createChain__(self, template = None, question = None, answer = None):
         pass
 
 
     def runChat(self):
         
-     
         userInput = None
         self.promptGenerator.generate_template()
         
@@ -31,5 +29,5 @@ class ChatManager(LLMManager):
             prompt = self.promptGenerator.update_chat_history(question = userInput, answer = answer.content)
 
 
-newChat = ChatManager(20,20)
+newChat = ChatManager(PromptGenerator(20,20))
 newChat.runChat()
